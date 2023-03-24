@@ -2,8 +2,8 @@
 #include <string.h>
 
 void cripto(char texto1[], char texto2[]) {
-    char controle1[15] = "zciavutsrlponm";
-    char controle2[15] = "9e76543210GDMB";
+    char controle1[15] = "DanilotsrACEFG";
+    char controle2[15] = "B0NITOeu _%$#m";
     int i, j, tamanho;
 
     tamanho = strlen(texto1);
