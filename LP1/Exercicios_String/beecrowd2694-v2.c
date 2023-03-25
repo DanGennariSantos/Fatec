@@ -4,7 +4,6 @@
 
 int main() {
     char string[15];
-    char caracter;
     int nLinhas;
 
     printf("Insira o numero de linhas: ");
@@ -18,29 +17,43 @@ int main() {
         int num = 0;
 
         for (int j = 0; j < 15; j++) {
-            if (isdigit(string[j])) { //função 'isdigit()' verifica se o caracter é numerico ou não
+            if (isdigit(string[j])) { //funÃ§Ã£o 'isdigit()' verifica se o caracter Ã© numerico ou nÃ£o
 
-                caracter = string[j];
-                num = num * 10 + atoi(&caracter);
-                //alternativa 1: num = num * 10 + ((int)string[i] - 48):
-                    //48 converte o valor do caracter para numerico. Ver tabela ascii.
+                char caracter[2] = {string[j],'\0'}; //cria uma string temporÃ¡ria para armazenar o valor caracter
+                num = num * 10 + atoi(caracter); //funÃ§Ã£o atoi espera uma string, se inserir caracter direto dÃ¡ erro.
+                //num * 10 para deslocar o valor numÃ©rico jÃ¡ armazenado para a direita
+                //depois soma com o valor de caracter. Por exemplo (2 * 10) + 3 = 23
 
-                //alternativa 2: num = num * 10 + (string[i] - '0'):
-                    //subtrair por '0' também converte um caracter para numerico, assim como a função atoi.
+                /********alternativa1********
+                    caracter = string[j];
+                    num = num * 10 + atoi(&caracter); //usa ponteiro &caracter
+                ********alternativa1*********
+
+
+                ********alternativa2********
+                    num = num * 10 + ((int)string[i] - 48):
+                    -48 converte o valor do caracter para numerico, usa casting (int).
+                    Ver tabela ascii.
+                ********alternativa2*********
+
+
+                ********alternativa3********
+                    num = num * 10 + (string[i] - '0'):
+                    subtrair por '0' tambÃ©m converte um caracter para numerico
+                    mesmo resultado da funÃ§Ã£o atoi.
+                ********alternativa3*********/
 
             } else {
                 soma += num;
                 num = 0;
             }
         }
-        // adiciona o último número encontrado à soma
+        // adiciona o Ãºltimo nÃºmero encontrado Ã  soma
         soma += num;
 
-        printf("A soma dos numeros da lina %i eh: ", i);
+        printf("A soma dos numeros da linha %i eh: ", i);
         printf("%d\n", soma);
 
     }
 
-    return 0;
 }
-
