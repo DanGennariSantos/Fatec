@@ -1,28 +1,28 @@
 #include <stdio.h>
 #include <string.h>
 
-void cripto(char texto1[], char texto2[]) {
+void cripto(char entrada[9], char saida[9]) {
     char controle1[15] = "DanilotsrACEFG";
     char controle2[15] = "B0NITOeu _%$#m";
     int i, j, tamanho;
 
-    tamanho = strlen(texto1);
-    for (i = 0; i < tamanho; i++) {
+    tamanho = strlen(entrada);
+    for (i = 0; i < tamanho; i++) { //i = i + 1
         for (j = 0; j < 15; j++) {
-            if (texto1[i] == controle1[j]) {
-                texto2[i] = controle2[j];
+            if (entrada[i] == controle1[j]) { //== igual || ou != diferente
+                saida[i] = controle2[j];
                 break;
             }
-            else if (texto1[i] == controle2[j]) {
-                texto2[i] = controle1[j];
+            else if (entrada[i] == controle2[j]) {
+                saida[i] = controle1[j];
                 break;
             }
             else {
-                texto2[i] = texto1[i];
+                saida[i] = entrada[i]; //criptografado
             }
         }
     }
-    texto2[tamanho] = '\0';
+    saida[tamanho] = '\0';
 }
 
 int main() {
@@ -38,4 +38,5 @@ int main() {
 
     return 0;
 }
+
 
