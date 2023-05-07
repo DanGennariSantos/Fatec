@@ -2,43 +2,47 @@
 #include<ctype.h>
 #include<string.h>
 
-void RemoverCaracteres(char *frase){
+void RemoverCaracteres(char *frase)
+{
     int tamanho = strlen(frase);
     char aux[tamanho];
     int i, j = 0;
 
-    for (i = 0; i < tamanho; i++){
+    for (i = 0; i < tamanho; i++)
+    {
         char letra = *(frase + i);
 
-        if (isalpha(letra) != 0 || letra == ' '){
+        if (isalpha(letra) != 0 || letra == ' ')
+        {
             *(aux + j) = *(frase + i);
-            j++;}
-        else{
+            j++;
+        }
+        else
+        {
             *(aux + j) = ' ';
-            continue;}
+            continue;
+        }
     }
-
     *(aux + j) = '\0';
     strcpy(frase,aux);
 }
 
-
-int ContarPalavra(char *frase, char *palavra){
+int ContarPalavra(char *frase, char *palavra)
+{
     char *p;
     int cont = 0;
-
     p = strtok(frase," ");
 
-    while (p){
-        if (strcmp(p, palavra) == 0){
+    while (p)
+    {
+        if (strcmp(p, palavra) == 0)
+        {
             cont++;
         }
         p = strtok(NULL," ");
     }
-
     return cont;
 }
-
 
 void main ()
 {
@@ -52,9 +56,7 @@ void main ()
     scanf("%s", palavra);
 
     RemoverCaracteres(frase);
-
     //printf("Frase sem caracteres: %s\n", frase);
-
     int quantidade = ContarPalavra(frase, palavra);
 
     if (quantidade != 1)
@@ -63,6 +65,4 @@ void main ()
     printf("\nA palavra %s apareceu uma vez na frase\n", palavra);
 
     printf("\nPrograma encerrado...\n");
-
 }
-
