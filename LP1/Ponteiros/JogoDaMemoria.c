@@ -5,15 +5,21 @@
 #include <unistd.h>
 
 #define MAX_DIGITOS 20
+#define NUM_JOGADORES 2
+
+typedef struct {
+    char memoria[MAX_DIGITOS];
+    int num;
+    int acertos;
+} Jogador;
 
 int gerarAleatorio(){
-    srand(time(NULL));
     return rand() % 10;
 }
 
-void exibirNumero(int numero){
-    printf("Memorize o numero: %d\n", numero);
-    sleep(3);
+void exibirNumero(char* memoria){
+    printf("Memorize o numero: %s\n", memoria);
+    sleep(4);
     system("cls");
 }
 
@@ -25,27 +31,62 @@ int chutar(){
 }
 
 void main (){
+    srand(time(NULL));
+    Jogador jogadores[NUM_JOGADORES];
 
-    int num1 = gerarAleatorio();
-    char num1Str[2];
-    sprintf (num1Str, "%d", num1);
+    for (int i = 0; i < NUM_JOGADORES; i++){
+     jogadores[i].acertos = 0;
+     jogadores[i].num = 0;
+     strcpy(jogadores[i].memoria, "");
+    }
 
-    char memoria1[MAX_DIGITOS] = "";
-    strcat(memoria1, num1Str);
+    int rodada = 1;
+    int gameOver = 0;
 
-    exibirNumero(num1);
+    while(gameOver == 0)
+    {
+        printf("Rodada %d\n", rodada);
 
-    int chute1 = chutar();
-    char chute1Str[3];
-    sprintf (chute1Str, "%d", chute1);
+        for (int i = 0; i < NUM_JOGADORES; i++)
+        {
+        jogadores[i].num = gerarAleatorio();
 
-    //printf("Chute do Jogador 1 eh: %s\n", chute1Str);
+        char numStr[2];
+        sprintf (numStr, "%d", jogadores[i].num);
 
-    if (strcmp(chute1Str,memoria1) == 0)
-        printf("Jogador 1 acertou!\n");
+        char memoriaAux[MAX_DIGITOS];
+        strcpy(memoriaAux, jogadores[i].memoria);
+        strcat(memoriaAux, numStr);
+        exibirNumero(memoriaAux);
+
+        strcpy(jogadores[i].memoria, memoriaAux);
+
+        memset(memoriaAux, 0, sizeof(memoriaAux));
+
+        int chute = chutar();
+        char chuteStr[MAX_DIGITOS];
+        sprintf (chuteStr, "%d", chute);
+
+        if (strcmp(chuteStr,jogadores[i].memoria) == 0)
+            {
+            printf("Jogador %d acertou!\n\n", i+1);
+            jogadores[i].acertos++;
+            }
+        else
+            {
+            printf("Jogador %d errou!\n\n", i+1);
+            gameOver = 1;
+            }
+        }
+        rodada++;
+    }
+
+    if (jogadores[0].acertos > jogadores[1].acertos)
+        printf("Jogador 1 venceu com %d acertos!\n",jogadores[0].acertos);
+    else if (jogadores[1].acertos > jogadores[0].acertos)
+        printf("Jogador 2 venceu com %d acertos!\n",jogadores[1].acertos);
     else
-        printf("Jogador 1 errou!\n");
+        printf("Empate!");
 
-
-
+    printf("\nFim do jogo...\n");
 }
