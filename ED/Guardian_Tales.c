@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <unistd.h>
+//#include <unistd.h>
+#include <string.h>
+#include <ctype.h>
 #include "Guardian_Tales.h"
 
 #define MAXJOGADORES 20
@@ -17,14 +19,14 @@ int main(void) {
 
     // Jogador 1
     strcpy(jogadores[0].nome, "Danilo");
-    jogadores[0].pontuacao = 82;
+    jogadores[0].pontuacao = 87;
     jogadores[0].data.dia = 1;
     jogadores[0].data.mes = 1;
     jogadores[0].data.ano = 2023;
 
     // Jogador 2
     strcpy(jogadores[1].nome, "Danielly");
-    jogadores[1].pontuacao = 86;
+    jogadores[1].pontuacao = 91;
     jogadores[1].data.dia = 2;
     jogadores[1].data.mes = 1;
     jogadores[1].data.ano = 2023;
@@ -45,7 +47,7 @@ int main(void) {
 
     // Jogador 5
     strcpy(jogadores[4].nome, "Sergio");
-    jogadores[4].pontuacao = 75;
+    jogadores[4].pontuacao = 70;
     jogadores[4].data.dia = 5;
     jogadores[4].data.mes = 1;
     jogadores[4].data.ano = 2023;
@@ -65,12 +67,86 @@ int main(void) {
     jogadores[6].data.ano = 2023;
 
     // Jogador 8
-    strcpy(jogadores[7].nome, "Fernanda");
-    jogadores[7].pontuacao = 54;
-    jogadores[7].data.dia = 8;
-    jogadores[7].data.mes = 2;
-    jogadores[7].data.ano = 2023;
+    strcpy(jogadores[7].nome, "Breno");
+    jogadores[7].pontuacao = 76;
+    jogadores[7].data.dia = 7;
+    jogadores[7].data.mes = 10;
+    jogadores[7].data.ano = 2022;
 
+    // Jogador 9
+    strcpy(jogadores[8].nome, "Gessica");
+    jogadores[8].pontuacao = 75;
+    jogadores[8].data.dia = 7;
+    jogadores[8].data.mes = 1;
+    jogadores[8].data.ano = 2022;
+
+    // Jogador 10
+    strcpy(jogadores[9].nome, "Diego");
+    jogadores[9].pontuacao = 90;
+    jogadores[9].data.dia = 7;
+    jogadores[9].data.mes = 6;
+    jogadores[9].data.ano = 2020;
+
+    // Jogador 11
+    strcpy(jogadores[10].nome, "Paloma");
+    jogadores[10].pontuacao = 77;
+    jogadores[10].data.dia = 7;
+    jogadores[10].data.mes = 1;
+    jogadores[10].data.ano = 2021;
+
+    // Jogador 12
+    strcpy(jogadores[11].nome, "Milena");
+    jogadores[11].pontuacao = 88;
+    jogadores[11].data.dia = 7;
+    jogadores[11].data.mes = 1;
+    jogadores[11].data.ano = 2022;
+
+    // Jogador 13
+    strcpy(jogadores[12].nome, "Alan");
+    jogadores[12].pontuacao = 74;
+    jogadores[12].data.dia = 15;
+    jogadores[12].data.mes = 5;
+    jogadores[12].data.ano = 2022;
+
+    // Jogador 14
+    strcpy(jogadores[13].nome, "Erick");
+    jogadores[13].pontuacao = 8;
+    jogadores[13].data.dia = 18;
+    jogadores[13].data.mes = 1;
+    jogadores[13].data.ano = 2023;
+
+    // Jogador 15
+    strcpy(jogadores[14].nome, "Cris");
+    jogadores[14].pontuacao = 15;
+    jogadores[14].data.dia = 20;
+    jogadores[14].data.mes = 2;
+    jogadores[14].data.ano = 2023;
+
+    // Jogador 16
+    strcpy(jogadores[15].nome, "Delnice");
+    jogadores[15].pontuacao = 20;
+    jogadores[15].data.dia = 26;
+    jogadores[15].data.mes = 3;
+    jogadores[15].data.ano = 2023;
+
+    // Jogador 17
+    strcpy(jogadores[16].nome, "Cesar");
+    jogadores[16].pontuacao = 18;
+    jogadores[16].data.dia = 7;
+    jogadores[16].data.mes = 1;
+    jogadores[16].data.ano = 2023;
+
+    // Jogador 18
+    strcpy(jogadores[17].nome, "Dimas");
+    jogadores[17].pontuacao = 61;
+    jogadores[17].data.dia = 29;
+    jogadores[17].data.mes = 1;
+    jogadores[17].data.ano = 2023;
+
+    // Jogador 19
+    strcpy(jogadores[18].nome, "");
+
+    proxJogador(jogadores, &numJogadores);
     ChamarMenu(jogadores);
 
     return 0;
@@ -78,7 +154,7 @@ int main(void) {
 
 void ChamarMenu(Jogador *jogadores) {
 
-    int opcao;
+    int opcao = 0;
 
     while (opcao != 8){
 
@@ -93,11 +169,11 @@ void ChamarMenu(Jogador *jogadores) {
         printf ("\n8 - Fim\n");
         printf ("\n-----------------------------------\n");
         printf ("\nSelecione uma opcao: ");
-        scanf ("%d", &opcao);
+        scanf (" %d", &opcao);
 
         switch (opcao) {
             case 1:
-                Jogar(jogadores);
+                Jogar(jogadores, &numJogadores);
                 break;
             case 2:
                 MostrarAlta(jogadores);
@@ -106,7 +182,7 @@ void ChamarMenu(Jogador *jogadores) {
                 MostrarBaixa(jogadores);
                 break;
             case 4:
-                MostrarDados();
+                MostrarDados(jogadores);
                 break;
             case 5:
                 MostrarNumJogadores(jogadores);
@@ -115,7 +191,7 @@ void ChamarMenu(Jogador *jogadores) {
                 MostrarRanking(jogadores);
                 break;
             case 7:
-                RemoverJogador();
+                RemoverJogador(jogadores, &numJogadores);
                 break;
             case 8:
                 Finalizar();
@@ -125,27 +201,42 @@ void ChamarMenu(Jogador *jogadores) {
         }
     }
 }
+
 //--------------------------------------------------------------------------------------
-void Jogar(Jogador *jogadores) {
-    printf("\nEstou na funcao jogar \\o/\n");
+void Jogar(Jogador *jogadores, int *numJogadores)
+{
+    //printf("\nEstou na funcao jogar \\o/\n");
 
-    int numJogadores = proxJogador(jogadores);
-    jogadores[numJogadores] = lerJogador();
+    int aux = *numJogadores;
+    Jogador novoJogador = lerJogador();
+    printf("\nSua pontuacao: %i\n", novoJogador.pontuacao);
 
-    printf("\nSua pontuacao: %i\n", jogadores[numJogadores].pontuacao);
-    }
+    if (*numJogadores < MAXJOGADORES)
+    {
+        jogadores[aux] = novoJogador;
+        (*numJogadores)++;
+
+    } else
+        {
+        int posicaoPiorJogador = EncontrarPiorJogador(jogadores, numJogadores);
+
+        if (novoJogador.pontuacao > jogadores[posicaoPiorJogador].pontuacao)
+            jogadores[posicaoPiorJogador] = novoJogador;
+
+            else
+            printf("O ranking atingiu o limite de jogadores.\n");
+        }
+}
 
 //--------------------------------------------------------------------------------------
 void MostrarAlta(Jogador *jogadores) {
-    printf("\nEstou na funcao MostarAlta \\o/\n");
+    //printf("\nEstou na funcao MostarAlta \\o/\n");
 
     int maiorPontuacao = jogadores[0].pontuacao;
-    Jogador jogadorAlta = jogadores[0];
 
-    for (int i = 0; i < proxJogador(jogadores); i++) {
+    for (int i = 0; i < numJogadores; i++) {//até o numero de jogadores. Lembre-se que o jogador[0] é o Jogador 1
         if (jogadores[i].pontuacao > maiorPontuacao) {
             maiorPontuacao = jogadores[i].pontuacao;
-            jogadorAlta = jogadores[i];
         }
     }
     printf("A maior pontuacao eh: %d\n", maiorPontuacao);
@@ -153,47 +244,56 @@ void MostrarAlta(Jogador *jogadores) {
 
 //--------------------------------------------------------------------------------------
 void MostrarBaixa(Jogador *jogadores) {
-    printf("\nEstou na funcao MostrarBaixa \\o/\n");
 
-    int menorPontuacao = jogadores[0].pontuacao;
-    Jogador jogadorBaixa = jogadores[0];
+    int piorJogador = EncontrarPiorJogador(jogadores, &numJogadores);//ver a função EncontrarPiorJogador
 
-    for (int i = 0; i < proxJogador(jogadores); i++) {
-        if (jogadores[i].pontuacao < menorPontuacao) {
-            menorPontuacao = jogadores[i].pontuacao;
-            jogadorBaixa = jogadores[i];
-        }
-    }
-    printf("A menor pontuacao eh: %d\n", menorPontuacao);
+    if (piorJogador != -1)
+        printf("A menor pontuacao eh: %d\n", jogadores[piorJogador].pontuacao);
+
+    else
+        printf("Nao ha jogadores ranqueados.\n");
 }
 
 //--------------------------------------------------------------------------------------
-void MostrarDados() {
-    printf("\nEstou na funcao MostrarDados \\o/\n");
-    }
+void MostrarDados(Jogador *jogadores)
+{
+    //printf("\nEstou na funcao MostrarDados \\o/\n");
+
+    char nome[MAXNOME];
+    printf("Digite o nome do jogador para mostrar os dados: ");
+    scanf(" %[^\n]", nome);
+
+    //int numJogadores = proxJogador(jogadores, &numJogadores);
+    int posicao = EncontrarJogador(jogadores, &numJogadores, nome);
+
+    if (posicao != -1) {
+        exibirPessoa(jogadores[posicao]);
+    } else
+        printf("Jogador nao encontrado!\n");
+}
 
 //--------------------------------------------------------------------------------------
 void MostrarNumJogadores(Jogador *jogadores) {
-    printf("\nEstou na funcao MostrarJogador \\o/\n");
+    //printf("\nEstou na funcao MostrarJogador \\o/\n");
 
-    int numJogadores = proxJogador(jogadores);
     printf("O numero de jogadores ranqueados eh: %d\n", numJogadores);
     }
 
 //--------------------------------------------------------------------------------------
-void MostrarRanking(Jogador *jogadores) {
-    printf("\nEstou na funcao MostrarRanking \\o/\n");
-
-    // Ordenar jogadores por pontuação
-    int numJogadores = proxJogador(jogadores);
-    Jogador temp;
+void MostrarRanking(Jogador *jogadores)
+{
+    Jogador aux;
 
     for (int i = 0; i < numJogadores - 1; i++) {
         for (int j = i + 1; j < numJogadores; j++) {
-            if (jogadores[j].pontuacao > jogadores[i].pontuacao) {
-                temp = jogadores[i];
+            if (jogadores[j].pontuacao > jogadores[i].pontuacao)
+            //quero a pontuação do jogador[i] no jogador[j]
+            //mas não quero perder os dados do jogador[j]
+            //por isso, usei o aux, para armazenar momentaneamente os dados do jogador [i]
+            {
+                aux = jogadores[i];
                 jogadores[i] = jogadores[j];
-                jogadores[j] = temp;
+                jogadores[j] = aux;
             }
         }
     }
@@ -204,12 +304,32 @@ void MostrarRanking(Jogador *jogadores) {
         printf("\nPosicao %d:", i + 1);
         exibirPessoa(jogadores[i]);
     }
-    }
+}
 
 //--------------------------------------------------------------------------------------
-void RemoverJogador() {
-    printf("\nEstou na funcao RemoverJogador \\o/\n");
-    }
+void RemoverJogador(Jogador *jogadores, int *numJogadores)
+{
+    //printf("\nEstou na funcao RemoverJogador \\o/\n");
+    char nome[MAXNOME];
+    printf("Digite o nome do jogador a ser removido: ");
+    scanf(" %[^\n]", nome);
+
+    int aux = proxJogador(jogadores, numJogadores);
+    int posicao = EncontrarJogador(jogadores, numJogadores, nome);
+    if (posicao != -1)
+    {
+        int i;
+        for (i = posicao; i < *numJogadores - 1; i++)//loop a partir do jogador encontrado
+            {
+            jogadores[i] = jogadores[i + 1];//todos jogadores após o encontrado dão um passinho pra trás
+            }
+        strcpy(jogadores[aux-1].nome,"");
+        printf("Jogador removido com sucesso!\n");
+        (*numJogadores)--;
+
+    } else
+        printf("Jogador nao encontrado!\n");
+}
 
 //--------------------------------------------------------------------------------------
 void Finalizar() {
@@ -247,7 +367,7 @@ int gerarAleatorio(){
 }
 
 //--------------------------------------------------------------------------------------
-int proxJogador(Jogador *jogadores){
+int proxJogador(Jogador *jogadores, int *numJogadores){
     int i;
 
     for (i = 0; i < MAXJOGADORES; i++){
@@ -256,5 +376,31 @@ int proxJogador(Jogador *jogadores){
         }
     }
     strcpy(jogadores[i+1].nome,"");
+    *numJogadores = i;
     return i;
+}
+
+//----------------------------------------------------------------------------------------
+int EncontrarJogador(Jogador *jogadores, int *numJogadores, char *nome)
+{
+    for (int i = 0; i < *numJogadores; i++) {
+        if (strcmp(jogadores[i].nome, nome) == 0) {
+            return i; // Retorna o índice do jogador encontrado
+        }
+    }
+    return -1; // Retorna -1 se o jogador não for encontrado
+}
+
+//--------------------------------------------------------------------------------------
+int EncontrarPiorJogador(Jogador *jogadores, int *numJogadores) {
+    int posicaoPior = 0;
+    int menorPontuacao = jogadores[0].pontuacao;
+
+    for (int i = 1; i < *numJogadores; i++) {
+        if (jogadores[i].pontuacao < menorPontuacao) {
+            menorPontuacao = jogadores[i].pontuacao;
+            posicaoPior = i;
+        }
+    }
+    return posicaoPior;
 }
