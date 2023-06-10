@@ -41,24 +41,28 @@ int pesquisaBinaria(TNUMERO *vetor, int inicio, int fim, int numero) {
     return -1; // Retorna -1 se o caractere não for encontrado
 }
 
-void main()
+//---------------------------------principal---------------------------
+
+int main()
 {
     int qtdEntradas;
-    printf("Informe a quantidade de entradas: ");
+    //printf("Informe a quantidade de entradas: ");
     scanf("%i", &qtdEntradas);
 
     TNUMERO entrada[qtdEntradas];
+    TNUMERO saida[qtdEntradas];
     for (int i = 0; i < qtdEntradas; i++)
     {
-        printf("Informe o valor [%i]: ", i + 1);
+        //printf("Informe o valor [%i]: ", i + 1);
         scanf("%i", &entrada[i].numero);
+        saida[i].numero = -1;
     }
 
-    TNUMERO saida[qtdEntradas];
+    selecao(entrada, qtdEntradas);
+
     int j = 0;
     for (int i = 0; i < qtdEntradas; i++)
     {
-        selecao(saida, qtdEntradas);
 
         //pesquisar se o número já existe no vetor
         int indice = pesquisaBinaria(saida, 0, j, entrada[i].numero);
@@ -81,7 +85,9 @@ void main()
 
     //outro for para imprimir em ordem crescente de numero
     for (int i = 0; i < j; i++){
-        if (saida[i].qtd > 0)
+        if (saida[i].qtd > 0 && saida[i].numero > 0)
         printf("%d aparece %d vez(es)\n", saida[i].numero, saida[i].qtd);
     }
+
+    return 0;
 }
