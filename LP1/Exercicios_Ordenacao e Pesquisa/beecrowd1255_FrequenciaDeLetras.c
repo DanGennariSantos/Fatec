@@ -21,7 +21,7 @@ int pesquisaBinaria(TCARACTER vetor[], int inicio, int fim, char caracter) {
         }
     }
 
-    return -1; // Retorna -1 se o caractere n„o for encontrado
+    return -1; // Retorna -1 se o caractere n√£o for encontrado
 }
 
 void bolha(TCARACTER *vetor, int tamanho) {
@@ -55,7 +55,7 @@ int main() {
     scanf("%d", &qtdTestes);
 
     while (getchar() != '\n') {
-        continue; // Limpa o buffer do teclado apÛs a leitura do inteiro
+        continue; // Limpa o buffer do teclado ap√≥s a leitura do inteiro
     }
 
     for (int i = 0; i < qtdTestes; i++) {
@@ -68,7 +68,7 @@ int main() {
         int indice = -1;
 
         for (int j = 0; j < tamanho; j++) {
-            if (isalpha(origem[j])) { // Verifica se o caractere È uma letra
+            if (isalpha(origem[j])) { // Verifica se o caractere √© uma letra
                 char letra = tolower(origem[j]);
 
                 bolha(contador, l);
@@ -85,9 +85,9 @@ int main() {
         }
 
         bolha(contador, l);
-        insercao(contador, l); // Ordena o vetor de caracteres por ordem de ocorrÍncia
+        insercao(contador, l); // Ordena o vetor de caracteres por ordem de ocorr√™ncia
 
-        int max_ocorrencia = contador[0].qtd; // Maior ocorrÍncia encontrada
+        int max_ocorrencia = contador[0].qtd; // Maior ocorr√™ncia encontrada
 
         int j = 0;
         while (j < l && contador[j].qtd == max_ocorrencia) {
