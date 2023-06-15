@@ -11,29 +11,29 @@ int main (){
 
     printf("Informe a primeira palavra: ");
     //fflush(stdin);
-    gets(primeiraPalavra);
-    printf("%s\n", primeiraPalavra);
+    scanf("%s",primeiraPalavra);
+    //printf("%s\n", primeiraPalavra);
 
     //fflush(stdin);
     printf("Informe a segunda palavra: ");
-    gets(segundaPalavra);
-    printf("%s\n", segundaPalavra);
+    scanf("%s",segundaPalavra);
+    //printf("%s\n", segundaPalavra);
 
     //fflush(stdin);
     printf("Informe a terceira palavra: ");
-    gets(terceiraPalavra);
-    printf("%s\n", terceiraPalavra);
+    scanf("%s",terceiraPalavra);
+    //printf("%s\n", terceiraPalavra);
 
-    primeiraPalavra[14] = '\0';
-    segundaPalavra[9] = '\0';
-    terceiraPalavra[12] = '\0';
+    //primeiraPalavra[14] = '\0';
+    //segundaPalavra[9] = '\0';
+    //terceiraPalavra[12] = '\0';
 
     strcpy(entrada,"");
     strcat(entrada, primeiraPalavra);
     strcat(entrada, segundaPalavra);
     strcat(entrada, terceiraPalavra);
 
-    printf("%s", entrada);
+    //printf("%s\n", entrada);
 
     int tamanho = strlen(entrada+1);
 
@@ -78,4 +78,3 @@ int main (){
         printf("minhoca");
 
 }
-
