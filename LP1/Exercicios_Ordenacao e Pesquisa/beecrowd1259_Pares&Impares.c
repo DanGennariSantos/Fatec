@@ -26,7 +26,7 @@ void quickSortCrescente(int *vetor, int esq, int dir) {
         quickSortCrescente(vetor, i, dir);
 }
 
-//--------------------------------Adaptação da função acima--------------------------
+//--------------------------------AdaptaÃ§Ã£o da funÃ§Ã£o acima--------------------------
 void quickSortDecrescente(int *vetor, int esq, int dir) {
     int i = esq, j = dir;
     int pivo = vetor[(esq + dir) / 2];
@@ -77,7 +77,7 @@ int main() {
     // Ordena a lista de pares em ordem crescente usando QuickSort
     quickSortCrescente(pares, 0, numPares - 1);
 
-    // Ordena a lista de ímpares em ordem decrescente usando QuickSort
+    // Ordena a lista de Ã­mpares em ordem decrescente usando QuickSort
     quickSortDecrescente(impares, 0, numImpares - 1);
 
     // Imprime pares
@@ -85,7 +85,7 @@ int main() {
         printf("%d\n", pares[i]);
     }
 
-    // Imprime ímpares
+    // Imprime Ã­mpares
     for (int i = 0; i < numImpares; i++) {
         printf("%d\n", impares[i]);
     }
