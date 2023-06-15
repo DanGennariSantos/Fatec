@@ -6,25 +6,25 @@ typedef struct {
     int qtd;
 } TNUMERO;
 
-//-------------------------Algortimo de ordenação por seleção----------------
+//-------------------------Algortimo de ordenaÃ§Ã£o por seleÃ§Ã£o----------------
 void selecao(TNUMERO *vetor, int tamanho) {
     int i, j, minimo;
 
     // Percorre o vetor
     for (i = 0; i < tamanho-1; i++) {
-        // Encontra o elemento mínimo no vetor não ordenado
+        // Encontra o elemento mÃ­nimo no vetor nÃ£o ordenado
         minimo = i;
         for (j = i + 1; j < tamanho; j++)
             if (vetor[j].numero < vetor[minimo].numero)
                 minimo = j;
 
-        // Troca o elemento mínimo com o primeiro elemento não ordenado
+        // Troca o elemento mÃ­nimo com o primeiro elemento nÃ£o ordenado
         TNUMERO auxiliar = vetor[minimo];
         vetor[minimo] = vetor[i];
         vetor[i] = auxiliar;
     }
 }
-//--------------------------Pesquisa Binária--------------------------------
+//--------------------------Pesquisa BinÃ¡ria--------------------------------
 int pesquisaBinaria(TNUMERO *vetor, int inicio, int fim, int numero) {
     while (inicio <= fim) {
         int meio = (inicio + fim) / 2;
@@ -38,7 +38,7 @@ int pesquisaBinaria(TNUMERO *vetor, int inicio, int fim, int numero) {
         }
     }
 
-    return -1; // Retorna -1 se o caractere não for encontrado
+    return -1; // Retorna -1 se o caractere nÃ£o for encontrado
 }
 
 //---------------------------------principal---------------------------
@@ -64,10 +64,10 @@ int main()
     for (int i = 0; i < qtdEntradas; i++)
     {
 
-        //pesquisar se o número já existe no vetor
+        //pesquisar se o nÃºmero jÃ¡ existe no vetor
         int indice = pesquisaBinaria(saida, 0, j, entrada[i].numero);
 
-        //se o número NÃO existe no vetor, incluí-lo numa nova posição (índice) no vetor saída
+        //se o nÃºmero NÃƒO existe no vetor, incluÃ­-lo numa nova posiÃ§Ã£o (Ã­ndice) no vetor saÃ­da
         if (indice == -1)
         {
             saida[j].numero = entrada[i].numero;
@@ -75,7 +75,7 @@ int main()
             j++;
         }
 
-        //se o número já existe no vetor, somar na quantidade
+        //se o nÃºmero jÃ¡ existe no vetor, somar na quantidade
         else
         {
             saida[indice].qtd++; //incrementa a quantidade do numero encontrado
