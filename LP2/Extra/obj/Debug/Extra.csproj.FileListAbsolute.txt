@@ -1,0 +1,10 @@
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\bin\Debug\Extra.exe.config
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\bin\Debug\Extra.exe
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\bin\Debug\Extra.pdb
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.csproj.AssemblyReference.cache
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.Properties.Resources.resources
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.csproj.GenerateResource.cache
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.csproj.CoreCompileInputs.cache
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.exe
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.pdb
+C:\Users\danil\OneDrive - Fatec Centro Paula Souza\Semestre_2\LP2\Extra\obj\Debug\Extra.pnlCadastroAluno.resources
