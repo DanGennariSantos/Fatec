@@ -1,0 +1,4 @@
+Criar um programa que a partir de 3 valores fornecidos pelo usuário: A, B e
+C (testar se são números), verificar se eles podem pertencer aos lados de um
+triângulo, e caso sim, informar se é isósceles, equilátero ou escaleno. Não
+pode receber vazio também.
